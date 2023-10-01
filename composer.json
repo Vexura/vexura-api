@@ -1,6 +1,6 @@
 {
     "name": "vexura/vexura-api",
-    "description": "A full-featured implementation of the GoWebMedia API",
+    "description": "A full-featured implementation of the VexuraAPI",
     "type": "library",
     "license": "GPL-3.0-or-later",
     "authors": [
