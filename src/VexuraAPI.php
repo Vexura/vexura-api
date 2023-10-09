@@ -7,23 +7,25 @@ use GuzzleHttp\Client;
 use Psr\Http\Message\ResponseInterface;
 use Vexura\Accounting\Accounting;
 use Vexura\Exception\ParameterException;
+use Vexura\RootServer\RootServer;
 use Vexura\SubUser\SubUser;
 
 class VexuraAPI
 {
     private $httpClient;
     private $credentials;
-    private $apiToken;
+    private string $apiToken;
 
     /**
      * @var Accounting
      */
-    private $accountingHandler;
+    private Accounting $accountingHandler;
 
     /**
      * @var SubUser
      */
-    private $subuserHandler;
+    private SubUser $subuserHandler;
+    private RootServer $rootServerHandler;
 
     /**
      * VexuraAPI constructor.
@@ -168,4 +170,12 @@ class VexuraAPI
         return $this->subuserHandler;
     }
 
+    /**
+     * @return RootServer
+     */
+    public function rootServer(): RootServer
+    {
+        if (!$this->rootServerHandler) $this->rootServerHandler = new RootServer($this);
+        return $this->rootServerHandler;
+    }
 }
